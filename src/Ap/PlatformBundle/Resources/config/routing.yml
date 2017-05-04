@@ -1,0 +1,26 @@
+ap_platform_home:
+    path:      /
+    defaults:
+        _controller: ApPlatformBundle:Animals:index
+
+ap_platform_view:
+    path:      /animal/{id}
+    defaults:  { _controller: ApPlatformBundle:Animals:view }
+    requirements:
+      id: \d*
+
+ap_platform_add:
+    path:      /add
+    defaults:  { _controller: ApPlatformBundle:Animals:add }
+
+ap_platform_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: ApPlatformBundle:Animals:edit }
+    requirements:
+        id: \d+
+
+ap_platform_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: ApPlatformBundle:Animals:delete }
+    requirements:
+        id: \d+

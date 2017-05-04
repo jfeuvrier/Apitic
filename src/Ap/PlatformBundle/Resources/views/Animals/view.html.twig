@@ -1,0 +1,40 @@
+{% extends "ApPlatformBundle::layout.html.twig" %}
+
+
+{% block title %}
+  Liste - {{ parent() }}
+{% endblock %}
+
+{% block applatform_body %}
+  <h2>{{ animal.name }}</h2>
+  <li><b>Catégorie : </b> {{ animal.category }}</li>
+  <li><b> Espèce : </b> {{ animal.espece|lower }}</li>
+  {# On aurait pu faire plus élégant ici #}
+  <li><b> Caractéristique
+  {% if animal.category == "reptile" %}
+     des écailles :
+  {% elseif animal.category == "mammifère" %}
+     de la fourrure :
+  {% elseif animal.category == "oiseau" %}
+     du plumage :
+  {% else %}
+    du poil :
+  {% endif %}
+   </b>{{ animal.skinqualifier|lower }}</li>
+
+  <p>
+    <a href="{{ path('ap_platform_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+    <a href="{{ path('ap_platform_edit', {'id': animal.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-edit"></i>
+      Modifier
+    </a>
+    <a href="{{ path('ap_platform_delete', {'id': animal.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer
+    </a>
+  </p>
+
+{% endblock %}

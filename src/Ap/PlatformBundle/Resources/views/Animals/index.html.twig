@@ -1,0 +1,39 @@
+{% extends "ApPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+{% block applatform_body %}
+  <link href={{asset('CSS/index.css')}} rel="stylesheet" type="text/css" />
+  <a class="btn btn-primary btn-lg" href={{ path('ap_platform_add')}}>
+    Ajouter un animal
+  </a>
+
+  <h2>Liste des animaux</h2>
+
+    <table><tr><th>Nom</th><th>Description</th><th>Edition</th></tr>
+    {% for animal in listAnimals %}
+      {# On détermine la couleur du fond grâce au type d'animal #}
+      <tr class={{animal.category}}>
+        <td>
+          <a href="{{ path('ap_platform_view', {'id': animal.id}) }}">
+            {{ animal.name }}</a>
+        </td>
+        
+        <td>
+          {{ animal.call }}
+        </td>
+
+        <td>
+          <a href="{{ path('ap_platform_edit', {'id': animal.id}) }}" class="btn btn-default">
+          <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+          <a href="{{ path('ap_platform_delete', {'id': animal.id}) }}" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>Supprimer</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </table>
+
+  <a class="btn btn-primary btn-lg" href={{ path('ap_platform_add')}}>
+    Ajouter un animal
+  </a>
+{% endblock %}

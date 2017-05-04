@@ -1,0 +1,15 @@
+.reptile {
+  background-color: #d3ffce;
+}
+
+.mammifère {
+  background-color: #c6e2ff;
+}
+
+.oiseau {
+  background-color: #eec9e4;
+}
+
+td {
+  padding: 2px;
+}
